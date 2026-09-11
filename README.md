@@ -44,12 +44,22 @@ data/referentiel_quartiers.csv      coordonnées des quartiers
 Pointez l'application sur ce dépôt, branche `main`, fichier `app.py`. Les
 dépendances de `requirements.txt` sont installées automatiquement.
 
-Le fond de carte CARTO exige une clé. Elle figure dans `core/loading.py` et se
-surcharge depuis **Settings → Secrets** :
+Le fond de carte CARTO exige une clé. Une clé par défaut figure dans
+`core/loading.py` ; pour la remplacer sans toucher au code, renseignez
+**Settings → Secrets** :
 
 ```toml
 carto_cle = "votre_cle"
 ```
+
+Streamlit Cloud expose les secrets comme variables d'environnement, et c'est par
+là que la clé est lue. En local, `carto_cle=... streamlit run app.py` fait la
+même chose.
+
+La lecture passe volontairement par l'environnement plutôt que par `st.secrets` :
+en l'absence de fichier de secrets, lire `st.secrets` émet un élément Streamlit,
+et comme `core/loading.py` est importé avant `st.set_page_config()`, cela suffit
+à empêcher l'application de démarrer.
 
 Sans clé valide, la carte se charge **vide, sans message d'erreur** — c'est le
 premier réflexe si les bulles flottent sur du blanc.

@@ -5,6 +5,7 @@ Aucune donnée métier n'est codée ici : tout vient de data/.
 Une nouvelle rentrée se charge en remplaçant le fichier d'extraction.
 """
 
+import os
 from pathlib import Path
 
 import pandas as pd
@@ -62,16 +63,17 @@ ZOOM_CARTE = 12
 # bulles reste lisible. Pour « voyager », remplacer light_all par voyager.
 #
 # Le dépôt étant public, la clé ci-dessous l'est aussi. Ce type de clé n'est pas
-# un secret au sens strict — elle voyage dans l'URL de chaque tuile et se lit
-# donc dans le navigateur de n'importe quel visiteur. Elle reste néanmoins
-# surchargeable par `st.secrets` : renseigner `carto_cle` dans les secrets de
-# Streamlit Cloud permet d'en changer sans toucher au code, et de ne pas laisser
-# la clé en service dans l'historique Git si elle venait à être abusée.
-CARTO_CLE = "cb1_3hdb_1_cdfc868c22cf32b27c78373e"
-try:
-    CARTO_CLE = st.secrets.get("carto_cle", CARTO_CLE)
-except Exception:  # aucun fichier de secrets : exécution locale ordinaire
-    pass
+# un secret au sens strict : elle voyage dans l'URL de chaque tuile et se lit
+# donc dans le navigateur de n'importe quel visiteur. Elle reste surchargeable
+# sans toucher au code, par la variable d'environnement `carto_cle` — que
+# Streamlit Cloud alimente depuis les Secrets de l'application.
+#
+# La surcharge passe volontairement par l'environnement et non par `st.secrets` :
+# en l'absence de fichier de secrets, lire `st.secrets` émet un élément
+# Streamlit. Ce module étant importé avant `st.set_page_config()`, cet élément
+# suffirait à faire échouer le démarrage de l'application.
+CARTO_CLE = os.environ.get("carto_cle") or os.environ.get("CARTO_CLE") \
+    or "cb1_3hdb_1_cdfc868c22cf32b27c78373e"
 
 FOND_CARTE = (
     f"https://basemaps.cartocdn.com/rastertiles/light_all/"
