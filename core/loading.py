@@ -47,8 +47,10 @@ OBLIGATOIRES = list(COLONNES.values())
 # Modalités de « Quartier analyse » qui ne sont pas des quartiers.
 EXCLUSIONS = ["Adresse non saisie", "Autres (etranger, autre ville)"]
 
+# Le dépôt étant public, l'établissement n'est pas nommé : ses coordonnées
+# suffisent à placer le marqueur et à mesurer l'écart au barycentre.
 ECOLE = {
-    "nom": "LFSG",
+    "nom": "École",
     "lat": 33.96171998756709,
     "lng": -6.870393728834948,
 }
