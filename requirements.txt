@@ -1,6 +1,9 @@
-streamlit>=1.38
-pandas>=2.0
-numpy>=1.24
-folium>=0.16
-streamlit-folium>=0.20
-openpyxl>=3.1
+# Versions figées : ce sont celles sur lesquelles l'application a été vérifiée.
+# Sans figeage, Streamlit Cloud installerait la dernière version publiée et
+# exécuterait la branche `width="stretch"` de app.py, jamais testée ici.
+# Python 3.12.
+streamlit==1.38.0
+pandas==2.2.2
+folium==0.20.0
+streamlit-folium==0.27.2
+openpyxl==3.1.2

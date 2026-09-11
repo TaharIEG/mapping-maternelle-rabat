@@ -23,7 +23,7 @@ from core import loading as ld
 from core import metrics as mx
 
 st.set_page_config(
-    page_title="Lieux de résidence des familles de maternelle",
+    page_title="Lieux de résidence des familles/élèves de maternelle",
     page_icon="🗺️",
     layout="wide",
 )
@@ -126,7 +126,7 @@ ecart_bary = mx.distance_km(bary, ecole) if bary else None
 st.markdown(
     """
     <div class="app-header">
-      <h1>Résidence des élèves de maternelle</h1>
+      <h1>Lieux de résidence des familles/élèves de maternelle</h1>
     </div>
     """,
     unsafe_allow_html=True,
