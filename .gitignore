@@ -1,0 +1,34 @@
+# Secrets Streamlit (clé du fond de carte, etc.)
+.streamlit/secrets.toml
+
+# Données réelles : l'extraction Eduka d'origine est identifiante et ne doit
+# jamais être committée. Elle est tenue hors du dépôt ; ces motifs ne sont
+# qu'un second verrou si une copie atterrit ici par accident.
+*_REEL*
+*_reel*
+*NE_PAS_PUBLIER*
+_prive/
+
+# Hors périmètre du dépôt : outils et documents de travail, conservés en local.
+# Ils sont listés ici pour qu'un « git add . » distrait ne les embarque pas.
+verifier.py
+plan_execution_mapping_maternelle.md
+old app/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Verrous Excel
+~$*
+
+# Outils et OS
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
