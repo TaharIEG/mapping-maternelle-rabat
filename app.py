@@ -23,7 +23,7 @@ from core import loading as ld
 from core import metrics as mx
 
 st.set_page_config(
-    page_title="Résidence des élèves",
+    page_title="Lieux de résidence des familles de maternelle",
     page_icon="🗺️",
     layout="wide",
 )
